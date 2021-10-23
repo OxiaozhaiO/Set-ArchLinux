@@ -1,0 +1,29 @@
+配置鏡像源：
+sudo pacman-mirrors -i -c China -m rank
+
+設置源：
+sudo vim /etc/pacman.conf
+輸入以下內容：
+[archlinux]
+Server = https://mirrors.ustc.edu.cn/archlinux/$arch
+
+更新源及系統：
+sudo pacman-mirrors -g
+sudo pacman -Syuu
+防止簽名錯誤:
+sudo pacman -S archlinuxcn-keyring
+_____________________________________________________________________________________________________________________________________________________________________
+
+一些其他的東西：
+
+安裝yay
+sudo pacman -S yay
+
+然後配置config.json
+vim ~./conffg/yay/config.json
+
+第一行改為以下內容:
+"aururl":"https://aur/tuna.tsinghua.edu.cn",
+
+然後執行
+sudo pacman -S base-devel
