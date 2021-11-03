@@ -1,0 +1,22 @@
+vscode
+sudo pacman -S visual-studio-code-bin
+sudo yay -S visual-studio-code-bin
+
+OBS
+sudo pacman -S obs-studio
+sudo yay -S obs-studio
+
+google-chrome
+sudo pacman -S google-chrome
+sudo yay -S google-chrome
+
+latte-dock
+sudo pacman -S latte-dock
+sudo yay -S latte-dock
+
+steam
+sudo pacman -S steam
+sudo yay -S steam
+
+Minecraft
+sudo pacman -S minecraft-launcher
