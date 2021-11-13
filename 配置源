@@ -1,5 +1,8 @@
-配置鏡像源：
+配置鏡像源（桌面環境）：
 sudo pacman-mirrors -i -c China -m rank
+
+安裝python-numpy包
+sudo pacman -S python-numpy
 
 設置源：
 sudo vim /etc/pacman.conf
