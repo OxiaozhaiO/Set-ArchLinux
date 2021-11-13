@@ -1,3 +1,6 @@
+fcitx
+sudo pacman -S fcitx-im fcitx-configtool
+
 vscode
 sudo pacman -S visual-studio-code-bin
 sudo yay -S visual-studio-code-bin
