@@ -1,3 +1,8 @@
+安裝輸入法軟體及輸入法：
+軟體：sudo pacman -S fcitx-im fcitx-configtool
+注音：sudo pacman -S fcitx5-chewing
+拼音：sudo pacman -S fcitx5-chinese-addons
+
 vscode
 sudo pacman -S visual-studio-code-bin
 sudo yay -S visual-studio-code-bin
