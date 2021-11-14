@@ -3,6 +3,16 @@
 注音：sudo pacman -S fcitx5-chewing
 拼音：sudo pacman -S fcitx5-chinese-addons
 
+kde桌面環境及軟體
+桌面環境(最小安裝)：sudo pacman -S plasma-desktop sddm
+Nautilus文件管理器: sudo pacman -S nautilus
+分區管理器:sudo pacman -S partitionmanager
+Yakuake下拉式終端 sudo pacman -S yakuake
+Nomacs圖片查看器: sudo pacman -S nomacs
+Konsole終端：sudo pacman -S konsole
+VLC影片播放器：sudo pacman -S vlc
+Ark解壓工具：sudo pacman -S ark
+
 jdk
 sudo pacman -S jdk
 
