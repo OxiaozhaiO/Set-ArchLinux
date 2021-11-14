@@ -13,6 +13,9 @@ Konsole終端：sudo pacman -S konsole
 VLC影片播放器：sudo pacman -S vlc
 Ark解壓工具：sudo pacman -S ark
 
+Inkscape矢量圖形剪輯：sudo pacman -S inkscape
+GIMP圖片剪輯：sudo pacman -S gimp
+
 jdk
 sudo pacman -S jdk
 
