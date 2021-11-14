@@ -3,6 +3,9 @@
 注音：sudo pacman -S fcitx5-chewing
 拼音：sudo pacman -S fcitx5-chinese-addons
 
+jdk
+sudo pacman -S jdk
+
 vscode
 sudo pacman -S visual-studio-code-bin
 sudo yay -S visual-studio-code-bin
