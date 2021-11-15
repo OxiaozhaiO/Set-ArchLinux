@@ -16,6 +16,11 @@ Ark解壓工具：sudo pacman -S ark
 Inkscape矢量圖形剪輯：sudo pacman -S inkscape
 GIMP圖片剪輯：sudo pacman -S gimp
 
+QQ && Wechat && 钉钉：
+yay -S dingtalk-linux
+yay -S deepin-wine-qq
+yay -S deepin-wine-wechat
+
 jdk
 sudo pacman -S jdk
 
