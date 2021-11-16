@@ -46,13 +46,3 @@ sudo yay -S steam
 
 Minecraft
 sudo pacman -S minecraft-launcher
-
-amd顯示卡驅動
-sudo pacman -S xf86-video-amdgpu
-sudo vim /etc/X11/xorg.conf.d/20-amdgpu.conf
-添加：
-Section "Device"
-     Identifier "AMD"
-     Driver "amdgpu"
-     Option "TearFree" "true"
-EndSection
