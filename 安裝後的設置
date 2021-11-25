@@ -3,3 +3,5 @@ sudo systemctl enable sddm
 
 添加dhcpcd
 sudo systemctl enable dhcpcd
+
+（其他待訂）
