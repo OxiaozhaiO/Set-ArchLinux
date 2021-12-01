@@ -1,3 +1,6 @@
+安裝中文和英文字體：
+sudo pacman -S ttf-dejavu wqy-microhei
+
 添加sddm
 sudo systemctl enable sddm
 
