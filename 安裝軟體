@@ -3,10 +3,9 @@
 注音：sudo pacman -S fcitx5-chewing
 拼音：sudo pacman -S fcitx5-chinese-addons
 
-安裝xorg:
-pacman -S xorg xorg-server
-
 kde桌面環境及軟體
+安裝xorg : pacman -S xorg xorg-server
+
 桌面環境(最小安裝)：sudo pacman -S plasma-desktop sddm
 Nautilus文件管理器: sudo pacman -S nautilus
 分區管理器:sudo pacman -S partitionmanager
