@@ -62,18 +62,19 @@ vim /mnt/etc/locale.gen  //用vim打開locale.gen
 將這三個取消註釋    
 ![](https://github.com/XxiaozhaiX/images/blob/main/fdisk/locale.gen.png)  
   
-設置locale.conf(在更新locale-gen後設置)   
-```java
-vim /mnt/etc/locale.conf
-輸入「LANG=en_US.UTF-8」
-```
 進入系統    
 ```java
 arch-chroot /mnt  //進入安裝好的系統
 ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime  //設置本地時間
 hwclock --systohc  //同步時間
 locale-gen  //更新locale-gen
-exit  //進入後退出系統的命令
+passwd  //設置密碼
+exit  //退出系統
+```
+設置locale.conf   
+```java
+vim /mnt/etc/locale.conf
+輸入「LANG=en_US.UTF-8」
 ```
 設置機器名
 ```java
@@ -87,4 +88,27 @@ vim /mnt/etc/hosts
 ::1           localhost
 127.0.0.1     <機器名>.localdomain  <機器名>
 ```
-## 萬惡之源———引導
+## 4.萬惡之源———grub引導
+進入安裝好的系統  
+```java
+arch-chroot /mnt
+```
+安裝grub及相關軟體 
+```java
+pacman -S grub efibootmgr intel-ucode os-prober  //intel的CPU安裝intel-ucode   amd的CPU安裝amd-ucode
+```
+創建/grub資料夾並生成grub文件 
+```java
+mkdir /boot/grub
+grub-mkconfig > /boot/grub/grub.cfg
+grub-mkconfig -o /boot/grub/grub.cfg  //新版
+```
+查看電腦架構  
+```java
+uname -m  //我這邊是x86_64
+```
+grub安裝架構版本
+```java
+grub-install --target=x86_64-efi --efi-directory=/boot  //x86_64
+grub-install --target=i386-pc /dev/sda  // MBR and BIOS
+```
