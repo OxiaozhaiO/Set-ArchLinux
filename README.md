@@ -112,3 +112,21 @@ grub安裝架構版本
 grub-install --target=x86_64-efi --efi-directory=/boot  //x86_64
 grub-install --target=i386-pc /dev/sda  // MBR and BIOS
 ```
+## 5.安裝軟體
+我安裝我所需要的軟體
+```java
+pacman -S vim  //最好用的編輯器
+pacman -S zsh  //如果bash是cmd,那麼zsh就是powershell
+pacman -S dhcpcd  //動態分配地址軟體
+pacman -S wpa_supplicant  //連網工具
+```
+## 6.安裝完成後
+重新啟動
+```java
+reboot
+```
+拔下隨身碟
+## 7.事後
+### 安裝失敗怎麼办
+#### 1.先安裝Manjaro,然後將其覆蓋
+#### 2.把磁碟吃了
