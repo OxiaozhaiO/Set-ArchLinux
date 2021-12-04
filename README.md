@@ -127,6 +127,22 @@ reboot
 ```
 拔下隨身碟
 ## 7.事後
+更新系統及軟體
+```java
+pacman -Syyu
+pacman -S base-devel
+```
+建立低權限的用戶
+```java
+useradd -m -G wheel <用戶名>
+```
+設置sudo
+```java
+visudo  //進入設置
+ln -s /usr/bin/vim /usr/bin/vi  //當上面指令不起作用時的方案一
+pacman -S vi                    //當上面指令不起作用時的方案二
+```
+![](https://github.com/XxiaozhaiX/images/blob/main/fdisk/sudo.png)
 ```java
 sudo pacman -S ttf-dejavu wqy-microhei //安裝中文和英文字體
 sudo systemctl enable dhcpcd  //dhcpcd開機啟動
