@@ -138,3 +138,7 @@ dhcpcd開機啟動
 ```java
 sudo systemctl enable dhcpcd
 ```
+添加sddm(如果安裝了桌面環境)
+```java
+sudo systemctl enable sddm
+```
