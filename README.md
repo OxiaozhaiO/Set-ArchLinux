@@ -52,7 +52,7 @@ mount /dev/sda1 /mnt/boot
 ```
 ##  3.安裝
 ```java
-pacstrap /mnt base linux linux-firmware  /安裝到掛(磁)載(碟)的目錄裡面
+pacstrap /mnt base linux linux-firmware  //安裝到掛(磁)載(碟)的目錄裡面
 genfstab -U /mnt >> /mnt/etc/fstab  //生成fstab
 ```
 ### 一系列設置
