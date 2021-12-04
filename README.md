@@ -14,3 +14,77 @@ fdisk /dev/sda  //進入磁碟,摁m顯示幫助
 ![](https://github.com/XxiaozhaiX/images/blob/main/fdisk/fdiskdev.png)
 根據自己磁碟的格式來選擇  
 ![](https://github.com/XxiaozhaiX/images/blob/main/fdisk/n.png)
+### GPT格式
+摁下「g」創建GPT格式表
+```java 
+1. 摁下「n」創建一個分區(作為引導)
+2. 提示「輸入磁碟編號」,摁ENTER選擇默認(這個分區位置為「/dev/sda1」)
+3. 然後提示「從哪裡(2048~xxxx)」,摁ENTER選擇最開頭
+4. 然後提示「到哪裡」,通常都是「+512M」
+5. 然後ENTER,如果有讓你輸入yes/no的就輸入yes
+6. 引導分區建好了
+7. 之後就是swap
+8. 還是同樣的做法摁「n」建立,但編號選擇「3」,提示「到哪裡」時,根據自己的情況加,我就輸入我的記憶體大小「+8G」
+9. 然後主分區狂摁ENTER就好了
+10.最後摁「w」寫入
+```
+### 設置分區格式
+```java
+/dev/sda1:引導(fat32)
+/dev/sda2:主分區(ext4)
+/dev/sda3:swap(swap)
+```
+```java
+mkfs.fat -F32 /dev/sda1
+mkfs.ext4 /dev/sda2
+mkswap /dev/sda3
+swapon /dev/sda3
+```
+## 2.掛載
+掛載的原因：我們是在隨身碟裏的系統工作,訪問不了磁碟,安裝也是安裝在隨身碟裏,所以要把磁碟掛載到隨身碟裏的系統裏
+```java
+mount /dev/sda2 /mnt  //將主分區掛載到/mnt目錄
+```
+創建/boot路徑,將/dev/sda1(引導)掛載到/boot
+```java
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
+```
+##  3.安裝
+```java
+pacstrap /mnt base linux linux-firmware  /安裝到掛(磁)載(碟)的目錄裡面
+genfstab -U /mnt >> /mnt/etc/fstab  //生成fstab
+```
+### 一系列設置
+```java
+vim /mnt/etc/locale.gen  //用vim打開locale.gen
+```
+將這三個取消註釋    
+![](https://github.com/XxiaozhaiX/images/blob/main/fdisk/locale.gen.png)  
+  
+設置locale.conf(在更新locale-gen後設置)   
+```java
+vim /mnt/etc/locale.conf
+輸入「LANG=en_US.UTF-8」
+```
+進入系統    
+```java
+arch-chroot /mnt  //進入安裝好的系統
+ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime  //設置本地時間
+hwclock --systohc  //同步時間
+locale-gen  //更新locale-gen
+exit  //進入後退出系統的命令
+```
+設置機器名
+```java
+vim /mnt/etc/hostname
+```
+編輯hosts
+```java
+vim /mnt/etc/hosts
+輸入:
+127.0.0.1     localhost
+::1           localhost
+127.0.0.1     <機器名>.localdomain  <機器名>
+```
+## 萬惡之源———引導
