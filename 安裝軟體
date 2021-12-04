@@ -3,6 +3,7 @@
 注音：sudo pacman -S fcitx5-chewing
 拼音：sudo pacman -S fcitx5-chinese-addons
 
+----------------------------------------------------
 kde桌面環境及軟體
 安裝xorg : pacman -S xorg xorg-server
 
@@ -14,7 +15,7 @@ Nomacs圖片查看器: sudo pacman -S nomacs
 Konsole終端：sudo pacman -S konsole
 VLC影片播放器：sudo pacman -S vlc
 Ark解壓工具：sudo pacman -S ark
-
+-----------------------------------------------------
 Inkscape矢量圖形剪輯：sudo pacman -S inkscape
 GIMP圖片剪輯：sudo pacman -S gimp
 
