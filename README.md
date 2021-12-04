@@ -130,3 +130,11 @@ reboot
 ### 安裝失敗怎麼办
 #### 1.先安裝Manjaro,然後將其覆蓋
 #### 2.把磁碟吃了
+安裝中文和英文字體：
+```java
+sudo pacman -S ttf-dejavu wqy-microhei
+```
+dhcpcd開機啟動
+```java
+sudo systemctl enable dhcpcd
+```
