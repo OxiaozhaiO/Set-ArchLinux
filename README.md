@@ -127,11 +127,11 @@ reboot
 ```
 拔下隨身碟
 ## 7.事後
-### 安裝失敗怎麼办
-#### 1.先安裝Manjaro,然後將其覆蓋
-#### 2.把磁碟吃了
 ```java
 sudo pacman -S ttf-dejavu wqy-microhei //安裝中文和英文字體
 sudo systemctl enable dhcpcd  //dhcpcd開機啟動
 sudo systemctl enable sddm  //添加sddm(如果安裝了桌面環境)
 ```
+### 安裝失敗怎麼办
+#### 1.先安裝Manjaro,然後將其覆蓋
+#### 2.把磁碟吃了
