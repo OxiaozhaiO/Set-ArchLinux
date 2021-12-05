@@ -1,4 +1,4 @@
-# 1.安裝MySQL:
+## 1.安裝MySQL:
 ```java
 sudo pacman -S mysql --noconfirm
 ```
@@ -36,7 +36,7 @@ mysqld --verbose --help
 默認配置文件:/etc/mysql/my.cnf
 默認數據庫文件:/var/lib/mysql/
 
-# 2.解決錯誤：
+## 2.解決錯誤：
 
 缺少icu63: mysqld: error while loading shared libraries: libicuuc.so.63: cannot open shared object file: No such file or directory
 (確保arch安裝了yay)
