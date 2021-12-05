@@ -1,11 +1,17 @@
 安裝MySQL:
+```java
 sudo pacman -S mysql --noconfirm
+```
 初始化MySQL:
+```java
 sudo mysqld --initialize --user=mysql
+```
 
 然後會出現默認密碼(比如)：
+```java
 2021-11-25T13:52:01.788772Z 6 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: (uznCYhYI10h
                                                                                                                『   這一段    』
+```
 給權限：
 chown -R mysql:mysql /var/lib/mysql
 啟動並登入：
