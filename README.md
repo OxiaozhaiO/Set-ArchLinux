@@ -116,7 +116,7 @@ grub-install --target=i386-pc /dev/sda  // MBR and BIOS
 我安裝我所需要的軟體
 ```java
 pacman -S vim  //最好用的編輯器
-pacman -S zsh  //如果bash是cmd,那麼zsh就是powershell
+pacman -S zsh
 pacman -S dhcpcd  //動態分配地址軟體
 pacman -S wpa_supplicant  //連網工具
 ```
