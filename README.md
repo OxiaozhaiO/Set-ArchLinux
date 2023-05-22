@@ -74,7 +74,9 @@ exit  //退出系統
 設置locale.conf   
 ```java
 vim /mnt/etc/locale.conf
-輸入「LANG=en_US.UTF-8」
+輸入:
+export LANG=zh_CN.UTF-8
+export LANGUAGE=zh_TW:zh_CN:en_US
 ```
 設置機器名
 ```java
