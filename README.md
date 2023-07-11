@@ -59,7 +59,7 @@ genfstab -U /mnt >> /mnt/etc/fstab  //生成fstab
 ```java
 vim /mnt/etc/locale.gen  //用vim打開locale.gen
 ```
-將這三個取消註釋    
+將這幾個取消註釋（如果你需要中文的話）    
 ![](https://github.com/XxiaozhaiX/images/blob/main/fdisk/locale.gen.png)  
   
 進入系統    
