@@ -1,22 +1,22 @@
 # 安裝ArchLinux
-```java
-timedatectl set-ntp true  //同步時間
+```bash
+timedatectl set-ntp true  #同步時間
 ```
 ## 1.分區
 我這邊使用fdisk
-```java
-fdisk -l //查看磁碟信息
+```bash
+fdisk -l #查看磁碟信息
 ```
 ![](https://github.com/XxiaozhaiX/images/blob/main/fdisk/main.jpg)
-```java
-fdisk /dev/sda  //進入磁碟,摁m顯示幫助
+```bash
+fdisk /dev/sda  #進入磁碟,摁m顯示幫助
 ```
 ![](https://github.com/XxiaozhaiX/images/blob/main/fdisk/fdiskdev.png)
 根據自己磁碟的格式來選擇  
 ![](https://github.com/XxiaozhaiX/images/blob/main/fdisk/n.png)
 ### GPT格式
 摁下「g」創建GPT格式表
-```java 
+```bash 
 1. 摁下「n」創建一個分區(作為引導)
 2. 提示「輸入磁碟編號」,摁ENTER選擇默認(這個分區位置為「/dev/sda1」)
 3. 然後提示「從哪裡(2048~xxxx)」,摁ENTER選擇最開頭
@@ -29,12 +29,12 @@ fdisk /dev/sda  //進入磁碟,摁m顯示幫助
 10.最後摁「w」寫入
 ```
 ### 設置分區格式
-```java
+```bash
 /dev/sda1:引導(fat32)
 /dev/sda2:主分區(ext4)
 /dev/sda3:swap(swap)
 ```
-```java
+```bash
 mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/sda2
 mkswap /dev/sda3
@@ -42,48 +42,48 @@ swapon /dev/sda3
 ```
 ## 2.掛載
 掛載的原因：我們是在隨身碟裏的系統工作,訪問不了磁碟,安裝也是安裝在隨身碟裏,所以要把磁碟掛載到隨身碟裏的系統裏
-```java
-mount /dev/sda2 /mnt  //將主分區掛載到/mnt目錄
+```bash
+mount /dev/sda2 /mnt  #將主分區掛載到/mnt目錄
 ```
 創建/boot路徑,將/dev/sda1(引導)掛載到/boot
-```java
+```bash
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 ```
 ##  3.安裝
-```java
-pacstrap /mnt base linux linux-firmware  //安裝到掛(磁)載(碟)的目錄裡面
-genfstab -U /mnt >> /mnt/etc/fstab  //生成fstab
+```bash
+pacstrap /mnt base linux linux-firmware  #安裝到掛(磁)載(碟)的目錄裡面
+genfstab -U /mnt >> /mnt/etc/fstab  #生成fstab
 ```
 ### 一系列設置
-```java
-vim /mnt/etc/locale.gen  //用vim打開locale.gen
+```bash
+vim /mnt/etc/locale.gen  #用vim打開locale.gen
 ```
 將這幾個取消註釋（如果你需要中文的話）    
 ![](https://github.com/XxiaozhaiX/images/blob/main/fdisk/locale.gen.png)  
   
 進入系統    
-```java
-arch-chroot /mnt  //進入安裝好的系統
-ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime  //設置本地時間
-hwclock --systohc  //同步時間
-locale-gen  //更新locale-gen
-passwd  //設置密碼
-exit  //退出系統
+```bash
+arch-chroot /mnt  #進入安裝好的系統
+ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime  #設置本地時間
+hwclock --systohc  #同步時間
+locale-gen  #更新locale-gen
+passwd  #設置密碼
+exit  #退出系統
 ```
 設置locale.conf   
-```java
+```bash
 vim /mnt/etc/locale.conf
 輸入:
 export LANG=zh_CN.UTF-8
 export LANGUAGE=zh_TW:zh_CN:en_US
 ```
 設置機器名
-```java
+```bash
 vim /mnt/etc/hostname
 ```
 編輯hosts
-```java
+```bash
 vim /mnt/etc/hosts
 輸入:
 127.0.0.1     localhost
@@ -92,63 +92,63 @@ vim /mnt/etc/hosts
 ```
 ## 4.萬惡之源———grub引導
 進入安裝好的系統  
-```java
+```bash
 arch-chroot /mnt
 ```
 安裝grub及相關軟體 
-```java
-pacman -S grub efibootmgr intel-ucode os-prober  //intel的CPU安裝intel-ucode   amd的CPU安裝amd-ucode
+```bash
+pacman -S grub efibootmgr intel-ucode os-prober  #intel的CPU安裝intel-ucode   amd的CPU安裝amd-ucode
 ```
 創建/grub資料夾並生成grub文件 
-```java
+```bash
 mkdir /boot/grub
 grub-mkconfig > /boot/grub/grub.cfg
-grub-mkconfig -o /boot/grub/grub.cfg  //新版
+grub-mkconfig -o /boot/grub/grub.cfg  #新版
 ```
 查看電腦架構  
-```java
-uname -m  //我這邊是x86_64
+```bash
+uname -m  #我這邊是x86_64
 ```
 grub安裝架構版本
-```java
-grub-install --target=x86_64-efi --efi-directory=/boot  //x86_64
-grub-install --target=i386-pc /dev/sda  // MBR and BIOS
+```bash
+grub-install --target=x86_64-efi --efi-directory=/boot  #x86_64
+grub-install --target=i386-pc /dev/sda  # MBR and BIOS
 ```
 ## 5.安裝軟體
 我安裝我所需要的軟體
-```java
-pacman -S vim  //最好用的編輯器
+```bash
+pacman -S vim  #最好用的編輯器
 pacman -S zsh
-pacman -S dhcpcd  //動態分配地址軟體
-pacman -S wpa_supplicant  //連網工具
+pacman -S dhcpcd  #動態分配地址軟體
+pacman -S wpa_supplicant  #連網工具
 ```
 ## 6.安裝完成後
 重新啟動
-```java
+```bash
 reboot
 ```
 拔下隨身碟
 ## 7.事後
 更新系統及軟體
-```java
+```bash
 pacman -Syyu
 pacman -S base-devel
 ```
 建立低權限的用戶
-```java
+```bash
 useradd -m -G wheel <用戶名>
 ```
 設置sudo
-```java
-visudo  //進入設置
-ln -s /usr/bin/vim /usr/bin/vi  //當上面指令不起作用時的方案一
-pacman -S vi                    //當上面指令不起作用時的方案二
+```bash
+visudo  #進入設置
+ln -s /usr/bin/vim /usr/bin/vi  #當上面指令不起作用時的方案一
+pacman -S vi                    #當上面指令不起作用時的方案二
 ```
 ![](https://github.com/XxiaozhaiX/images/blob/main/fdisk/sudo.png)
-```java
-sudo pacman -S ttf-dejavu wqy-microhei //安裝中文和英文字體
-sudo systemctl enable dhcpcd  //dhcpcd開機啟動
-sudo systemctl enable sddm  //添加sddm(如果安裝了桌面環境)
+```bash
+sudo pacman -S ttf-dejavu wqy-microhei #安裝中文和英文字體
+sudo systemctl enable dhcpcd  #dhcpcd開機啟動
+sudo systemctl enable sddm  #添加sddm(如果安裝了桌面環境)
 ```
 筆記本連接wifi
 ```bash
