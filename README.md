@@ -150,6 +150,12 @@ sudo pacman -S ttf-dejavu wqy-microhei //安裝中文和英文字體
 sudo systemctl enable dhcpcd  //dhcpcd開機啟動
 sudo systemctl enable sddm  //添加sddm(如果安裝了桌面環境)
 ```
+筆記本連接wifi
+```bash
+nmcli d wifi list #查看可用wifi
+nmcli d wifi connect <SSID> password <passwd> #連接wifi
+nmcli d disconnect <interface> #斷開wifi
+```
 ### 安裝失敗怎麼办
 #### 1.先安裝Manjaro,然後將其覆蓋(並不是在嗆Manjaro)
 #### 2.把磁碟吃了
