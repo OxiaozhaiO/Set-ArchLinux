@@ -97,7 +97,7 @@ arch-chroot /mnt
 ```
 安裝grub及相關軟體 
 ```bash
-pacman -S grub efibootmgr intel-ucode os-prober  #intel的CPU安裝intel-ucode   amd的CPU安裝amd-ucode
+pacman -S grub efibootmgr intel-ucode os-prober networkmanager #intel的CPU安裝intel-ucode   amd的CPU安裝amd-ucode
 ```
 創建/grub資料夾並生成grub文件 
 ```bash
